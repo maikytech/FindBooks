@@ -15,7 +15,7 @@ final class NetworkingProvider {
     var viewModel = SearchViewModel()
     
     //MARK: - Methods
-    func fetchData(technology: String) {
+    func fetchData(technology: String, success: @escaping (_ library: Library) -> (), failure: @escaping (_ error: Error) -> ()) {
         let url = "\(EndPoints.domain)\(EndPoints.search)\(technology)"
         guard let objectUrl = URL(string: url) else {
             print("url error")
@@ -30,9 +30,10 @@ final class NetworkingProvider {
             
             do {
                 let decoder = try JSONDecoder().decode(Library.self, from: data)
-                self.viewModel.dataArray.append(decoder)
+                success(decoder)
                 
             } catch let error {
+                failure(error)
                 print("error en el do \(error.localizedDescription)")
             }
         }.resume()

@@ -22,9 +22,12 @@ final class SearchViewModel {
     
     
     func getLibrary(technology: String) {
-        NetworkingProvider.shared.fetchData(technology: technology)
-       
-        
-        
+        NetworkingProvider.shared.fetchData(technology: technology) {(library) in
+            self.dataArray.append(library)
+            print(self.dataArray)
+    
+        } failure: { error in
+            print(error.localizedDescription)
+        }
     }
 }
