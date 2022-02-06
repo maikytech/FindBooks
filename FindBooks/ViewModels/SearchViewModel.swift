@@ -6,3 +6,25 @@
 //
 
 import Foundation
+
+final class SearchViewModel {
+    
+    //MARK: - Variables
+    private var refreshData = {
+        () -> () in
+    }
+    
+    var dataArray: [Library] = [] {
+        didSet {
+            refreshData()
+        }
+    }
+    
+    
+    func getLibrary(technology: String) {
+        NetworkingProvider.shared.fetchData(technology: technology)
+       
+        
+        
+    }
+}

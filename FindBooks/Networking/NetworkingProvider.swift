@@ -10,10 +10,12 @@ import Foundation
 final class NetworkingProvider {
     
     //MARK: - Variables
-    static let share = NetworkingProvider()
+    static let shared = NetworkingProvider()
     
-    //MARK: - Private Methods
-    private func getLibrary(technology: String) {
+    var viewModel = SearchViewModel()
+    
+    //MARK: - Methods
+    func fetchData(technology: String) {
         let url = "\(EndPoints.domain)\(EndPoints.search)\(technology)"
         guard let objectUrl = URL(string: url) else {
             print("url error")
@@ -22,14 +24,16 @@ final class NetworkingProvider {
         
         URLSession.shared.dataTask(with: objectUrl) { data, response, error in
             guard let data = data else {
-                print(error.debugDescription)
+                print("error en el data \(error.debugDescription)")
                 return
             }
             
             do {
                 let decoder = try JSONDecoder().decode(Library.self, from: data)
+                self.viewModel.dataArray.append(decoder)
+                
             } catch let error {
-                print(error.localizedDescription)
+                print("error en el do \(error.localizedDescription)")
             }
         }.resume()
     }

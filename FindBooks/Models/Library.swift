@@ -11,5 +11,5 @@ struct Library: Codable {
     let error: String
     let total: String
     let page: String
-    let books: Book
+    let books: [Book]
 }
