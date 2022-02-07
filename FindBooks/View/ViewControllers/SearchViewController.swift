@@ -32,8 +32,13 @@ final class SearchViewController: UIViewController {
     }
     
     private func bind() {
-        
+        viewModel.refreshData = {[weak self] () in
+            DispatchQueue.main.async {
+                //reload
+            }
+        }
     }
     
-
+    
 }
+

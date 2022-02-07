@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		654C984127B0525600821BE4 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654C984027B0525600821BE4 /* SearchView.swift */; };
 		654C984827B053F900821BE4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654C984727B053F900821BE4 /* SearchViewController.swift */; };
+		654C984A27B0A4BD00821BE4 /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654C984927B0A4BD00821BE4 /* BookTableViewCell.swift */; };
+		654C984E27B0BE1900821BE4 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654C984D27B0BE1900821BE4 /* DataSource.swift */; };
+		654C985027B0BE8100821BE4 /* GenericTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654C984F27B0BE8100821BE4 /* GenericTableViewCell.swift */; };
 		65EBBBF027AF138900B59B25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EBBBEF27AF138900B59B25 /* AppDelegate.swift */; };
 		65EBBBF227AF138900B59B25 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EBBBF127AF138900B59B25 /* SceneDelegate.swift */; };
 		65EBBBF927AF138A00B59B25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65EBBBF827AF138A00B59B25 /* Assets.xcassets */; };
@@ -43,6 +46,9 @@
 /* Begin PBXFileReference section */
 		654C984027B0525600821BE4 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		654C984727B053F900821BE4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		654C984927B0A4BD00821BE4 /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
+		654C984D27B0BE1900821BE4 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		654C984F27B0BE8100821BE4 /* GenericTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewCell.swift; sourceTree = "<group>"; };
 		65EBBBEC27AF138900B59B25 /* FindBooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindBooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65EBBBEF27AF138900B59B25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65EBBBF127AF138900B59B25 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +95,7 @@
 		654C984427B0539B00821BE4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				65EBBBFA27AF138A00B59B25 /* LaunchScreen.storyboard */,
 				654C984027B0525600821BE4 /* SearchView.swift */,
 			);
 			path = Views;
@@ -105,8 +112,27 @@
 		654C984627B053C300821BE4 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				654C984927B0A4BD00821BE4 /* BookTableViewCell.swift */,
+				654C984F27B0BE8100821BE4 /* GenericTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		654C984B27B0BD6800821BE4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				654C984D27B0BE1900821BE4 /* DataSource.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		654C984C27B0BD8400821BE4 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				65EBBBEF27AF138900B59B25 /* AppDelegate.swift */,
+				65EBBBF127AF138900B59B25 /* SceneDelegate.swift */,
+			);
+			path = Commons;
 			sourceTree = "<group>";
 		};
 		65EBBBE327AF138900B59B25 = {
@@ -132,14 +158,13 @@
 		65EBBBEE27AF138900B59B25 /* FindBooks */ = {
 			isa = PBXGroup;
 			children = (
+				65EBBC1F27AF1E0F00B59B25 /* Model */,
+				65EBBC2027AF1E2700B59B25 /* ViewModel */,
+				65EBBC2127AF1E4800B59B25 /* View */,
 				65EBBC2227AF1E5500B59B25 /* Networking */,
-				65EBBC2127AF1E4800B59B25 /* Views */,
-				65EBBC2027AF1E2700B59B25 /* ViewModels */,
-				65EBBC1F27AF1E0F00B59B25 /* Models */,
-				65EBBBEF27AF138900B59B25 /* AppDelegate.swift */,
-				65EBBBF127AF138900B59B25 /* SceneDelegate.swift */,
+				654C984B27B0BD6800821BE4 /* Protocols */,
+				654C984C27B0BD8400821BE4 /* Commons */,
 				65EBBBF827AF138A00B59B25 /* Assets.xcassets */,
-				65EBBBFA27AF138A00B59B25 /* LaunchScreen.storyboard */,
 				65EBBBFD27AF138A00B59B25 /* Info.plist */,
 			);
 			path = FindBooks;
@@ -162,31 +187,31 @@
 			path = FindBooksUITests;
 			sourceTree = "<group>";
 		};
-		65EBBC1F27AF1E0F00B59B25 /* Models */ = {
+		65EBBC1F27AF1E0F00B59B25 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				65EBBC2727AF4C7600B59B25 /* Library.swift */,
 				65EBBC2927AF5E7B00B59B25 /* Book.swift */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		65EBBC2027AF1E2700B59B25 /* ViewModels */ = {
+		65EBBC2027AF1E2700B59B25 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				65EBBC2B27AF661900B59B25 /* SearchViewModel.swift */,
 			);
-			path = ViewModels;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		65EBBC2127AF1E4800B59B25 /* Views */ = {
+		65EBBC2127AF1E4800B59B25 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				654C984627B053C300821BE4 /* Cells */,
-				654C984527B053AC00821BE4 /* ViewControllers */,
 				654C984427B0539B00821BE4 /* Views */,
+				654C984527B053AC00821BE4 /* ViewControllers */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
 		65EBBC2227AF1E5500B59B25 /* Networking */ = {
@@ -336,6 +361,9 @@
 				654C984127B0525600821BE4 /* SearchView.swift in Sources */,
 				65EBBBF227AF138900B59B25 /* SceneDelegate.swift in Sources */,
 				65EBBC2427AF3DA000B59B25 /* NetworkingProvider.swift in Sources */,
+				654C984A27B0A4BD00821BE4 /* BookTableViewCell.swift in Sources */,
+				654C985027B0BE8100821BE4 /* GenericTableViewCell.swift in Sources */,
+				654C984E27B0BE1900821BE4 /* DataSource.swift in Sources */,
 				65EBBC2827AF4C7600B59B25 /* Library.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
